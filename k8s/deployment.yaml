@@ -17,3 +17,8 @@ spec:
         image: jdark91/front-profile:latest
         ports:
         - containerPort: 80
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "echo 'Maintenance mode enabled' > /usr/share/nginx/html/index.html"]
+        
