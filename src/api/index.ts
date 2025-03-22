@@ -38,6 +38,9 @@ export const getSkills = async (code: String): Promise<Skill[]> => {
         language: code
       }
     });
+    if (response.status !== 200) {
+      throw new Error('Failed to fetch skills data');
+    }
     return response.data
   } catch (error) {
     console.log('Using fallback skills data');

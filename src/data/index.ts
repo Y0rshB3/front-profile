@@ -3,7 +3,7 @@ import { Skill, Experience, Project, BlogPost, SocialLink, MessageWelcome } from
 export const skills: Skill[] = [
   {
     id: 1,
-    name: 'JavaScript',
+    name: 'JavaScript (Dummy)',
     level: 90,
     category: 'Frontend',
     icon: 'Code',
@@ -11,7 +11,7 @@ export const skills: Skill[] = [
   },
   {
     id: 2,
-    name: 'React',
+    name: 'React (Dummy)',
     level: 85,
     category: 'Frontend',
     icon: 'Atom',
@@ -19,7 +19,7 @@ export const skills: Skill[] = [
   },
   {
     id: 3,
-    name: 'TypeScript',
+    name: 'TypeScript (Dummy)',
     level: 80,
     category: 'Frontend',
     icon: 'FileCode',
@@ -27,7 +27,7 @@ export const skills: Skill[] = [
   },
   {
     id: 4,
-    name: 'Node.js',
+    name: 'Node.js (Dummy)',
     level: 75,
     category: 'Backend',
     icon: 'Server',
@@ -35,7 +35,7 @@ export const skills: Skill[] = [
   },
   {
     id: 5,
-    name: 'Python',
+    name: 'Python (Dummy)',
     level: 70,
     category: 'Backend',
     icon: 'FileCode',
@@ -43,7 +43,7 @@ export const skills: Skill[] = [
   },
   {
     id: 6,
-    name: 'SQL',
+    name: 'SQL (Dummy)',
     level: 65,
     category: 'Database',
     icon: 'Database',
@@ -51,7 +51,7 @@ export const skills: Skill[] = [
   },
   {
     id: 7,
-    name: 'MongoDB',
+    name: 'MongoDB (Dummy)',
     level: 60,
     category: 'Database',
     icon: 'Database',
@@ -59,7 +59,7 @@ export const skills: Skill[] = [
   },
   {
     id: 8,
-    name: 'CSS/SCSS',
+    name: 'CSS/SCSS (Dummy)',
     level: 85,
     category: 'Frontend',
     icon: 'Palette',
@@ -68,7 +68,7 @@ export const skills: Skill[] = [
   // Spanish skills
   {
     id: 9,
-    name: 'JavaScript',
+    name: 'JavaScript (Ficticio/a)',
     level: 90,
     category: 'Frontend',
     icon: 'Code',
@@ -76,7 +76,7 @@ export const skills: Skill[] = [
   },
   {
     id: 10,
-    name: 'React',
+    name: 'React (Ficticio/a)',
     level: 85,
     category: 'Frontend',
     icon: 'Atom',
@@ -84,7 +84,7 @@ export const skills: Skill[] = [
   },
   {
     id: 11,
-    name: 'TypeScript',
+    name: 'TypeScript (Ficticio/a)',
     level: 80,
     category: 'Frontend',
     icon: 'FileCode',
@@ -93,7 +93,7 @@ export const skills: Skill[] = [
   // French skills
   {
     id: 12,
-    name: 'JavaScript',
+    name: 'JavaScript (Factice)',
     level: 90,
     category: 'Frontend',
     icon: 'Code',
@@ -101,7 +101,7 @@ export const skills: Skill[] = [
   },
   {
     id: 13,
-    name: 'React',
+    name: 'React (Factice)',
     level: 85,
     category: 'Frontend',
     icon: 'Atom',
