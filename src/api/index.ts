@@ -3,7 +3,7 @@ import { Skill, Experience, Project, BlogPost, SocialLink, MessageWelcome } from
 import { skills, experiences, projects, blogPosts, socialLink, messageWelcome } from '../data';
 
 // Base API URL - replace with your actual API endpoint when available
-const API_BASE_URL = '/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 // Fallback functions that return mock data
 const getFallbackSkills = (code?: String): Promise<Skill[]> => {
@@ -33,9 +33,12 @@ const getFallbackSocialLinks = (code?: String): Promise<SocialLink[]> => {
 // API functions with fallback to mock data
 export const getSkills = async (code: String): Promise<Skill[]> => {
   try {
-    /* const response = await axios.get(`${API_BASE_URL}/skills`);
-    return response.data;*/
-    return getFallbackSkills(code);
+    const response = await axios.get(`${API_BASE_URL}/info/skill`, {
+      params: {
+        language: code
+      }
+    });
+    return response.data
   } catch (error) {
     console.log('Using fallback skills data');
     return getFallbackSkills(code);
