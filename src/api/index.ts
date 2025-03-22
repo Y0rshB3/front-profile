@@ -50,9 +50,15 @@ export const getSkills = async (code: String): Promise<Skill[]> => {
 
 export const getExperiences = async (code: String): Promise<Experience[]> => {
   try {
-    /* const response = await axios.get(`${API_BASE_URL}/experiences`);
-    return response.data; */
-    return getFallbackExperiences(code);
+    const response = await axios.get(`${API_BASE_URL}/info/experience`, {
+      params: {
+        language: code
+      }
+    });
+    if (response.status !== 200) {
+      throw new Error('Failed to fetch skills data');
+    }
+    return response.data
   } catch (error) {
     console.log('Using fallback experiences data');
     return getFallbackExperiences(code);
