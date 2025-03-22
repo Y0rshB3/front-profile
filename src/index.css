@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... existing styles ... */
+
+/* Pixel image effect */
+.pixel-image {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-border {
+  position: relative;
+  box-shadow: 
+    -4px 0 0 0 var(--gameboy-green-1),
+    4px 0 0 0 var(--gameboy-green-1),
+    0 -4px 0 0 var(--gameboy-green-1),
+    0 4px 0 0 var(--gameboy-green-1);
+}
+
+/* Profile photo hover effect */
+.pixel-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gameboy-green-1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pixel-border:hover::before {
+  opacity: 0.1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@theme {
+  --breakpoint-xs: 20rem;
+}
+
+/* ... rest of existing styles ... */
