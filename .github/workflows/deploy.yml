@@ -1,32 +1,30 @@
-name: Frontend Deployment
+name: Deploy Frontend
 
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-    - name: Build Docker image
-      run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/front-profile:latest .
-
-    - name: Push Docker image
-      run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/front-profile:latest
-
-    - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: |
-        echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
-        kubectl --kubeconfig=kubeconfig.yaml apply -f k8s/deployment.yaml
+    - name: Deploy to Raspberry Pi
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.RASPBERRY_HOST }}
+        username: ${{ secrets.RASPBERRY_USER }}
+        password: ${{ secrets.RASPBERRY_PASSWORD }}
+        script: |
+          cd /home/y0rshb3/devops/temp_frontend
+          git pull origin main
+          npm install
+          npm run build
+          docker stop frontend || true
+          docker rm frontend || true
+          docker run -d --name frontend -p 3000:80 \
+            -v /home/y0rshb3/devops/temp_frontend/dist:/usr/share/nginx/html \
+            -v /home/y0rshb3/devops/temp_frontend/nginx.conf:/etc/nginx/conf.d/default.conf \
+            --restart=always nginx:alpine
+          echo ✅ Frontend deployed successfully!
